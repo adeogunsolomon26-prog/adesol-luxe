@@ -1,0 +1,5 @@
+body{background:#0a0a0a;color:#d4af37;font-family:Arial;text-align:center;padding:20px}
+.categories button{margin:5px;padding:10px 15px;background:#d4af37;color:#000;border:none;cursor:pointer;border-radius:5px}
+#shop{display:flex;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.bag{background:#fff;color:#000;width:200px;margin:10px;padding:15px;border-radius:10px}
+.bag button{background:#000;color:#d4af37;padding:8px;width:100%;border:none;margin-top:10px;cursor:pointer}
