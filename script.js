@@ -15,18 +15,21 @@ shop.innerHTML+=`<div class="bag"><h3>${bag.name}</h3><p>₦${bag.price}</p><sma
 });
 }
 function pay(price,name){
-  var handler = PaystackPop.setup({
-    key: 'pk_live_f15ec0726853909584469361d3dc05ef9b2d1cd9',
-    email: 'customer@gmail.com',
-    amount: price * 100,
-    currency: 'NGN',
-    ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-    callback: function(response){
-      alert('Payment complete! Reference: ' + response.reference);
-    },
-    onClose: function(){
-      alert('Payment closed');
-    }
-  });
-  handler.openIframe();
+ let email = prompt("Enter your email for receipt:", "");
+ if(!email) return alert("Email needed to pay");
+ var handler = PaystackPop.setup({
+  key: 'pk_live_f15ec0726853909584469361d3dc05ef9b2d1cd9',
+  email: email,
+  amount: price * 100,
+  currency: 'NGN',
+  ref: 'ADESOL-'+Math.floor((Math.random()*1000000000)+1),
+  metadata: { custom_fields: [{display_name: name, variable_name: name, value: name}] },
+  callback: function(response){
+    alert('Payment successful! Ref: ' + response.reference + ' for ' + name);
+  },
+  onClose: function(){
+    alert('Payment window closed');
+  }
+ });
+ handler.openIframe();
 }
