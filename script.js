@@ -14,27 +14,18 @@ shop.innerHTML+=`<div class="bag"><h3>${bag.name}</h3><p>₦${bag.price}</p><sma
 }
 });
 }
-function pay(price, name){
+function pay(price,name){
   var handler = PaystackPop.setup({
     key: 'pk_test_2135c87ecdb0c801edf0894d192f5b6a4f567abe',
     email: 'customer@gmail.com',
     amount: price * 100,
     currency: 'NGN',
     ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-    metadata: {
-      custom_fields: [
-        {
-          display_name: "Product",
-          variable_name: "product",
-          value: name
-        }
-      ]
-    },
     callback: function(response){
       alert('Payment complete! Reference: ' + response.reference);
     },
     onClose: function(){
-      alert('Payment window closed');
+      alert('Payment closed');
     }
   });
   handler.openIframe();
